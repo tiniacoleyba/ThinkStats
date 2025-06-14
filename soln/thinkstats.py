@@ -1,7 +1,7 @@
 """This file contains code for use with "Think Stats", 3rd edition
 by Allen B. Downey, available from greenteapress.com
 
-Copyright 2024 Allen B. Downey
+Copyright 2025 Allen B. Downey
 License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
 
 """
