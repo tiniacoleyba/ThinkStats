@@ -10,10 +10,10 @@ This documents contains the list of noteboks and chapters I already studied or a
 - [x] chap05
 - [x] chap06
 - [x] chap07
-- [ ] chap08
-- [ ] chap09
-- [ ] chap10
-- [ ] chap11
+- [x] chap08
+- [x] chap09
+- [x] chap10
+- [x] chap11
 - [ ] chap12
 - [ ] chap13
 - [ ] chap14
@@ -30,8 +30,6 @@ This documents contains the list of noteboks and chapters I already studied or a
 - [ ] time_series_03.ipynb
 
 ## Issues
-I have already reported issues 1 to 32.
-
 1. sol/brfss.py -> update copyright year from 2010 to 2025
 2. sol and nb/nsfg.py -> update copyright year from 2010 to 2025
 3. sol and nb/populations.py -> update copyright year from 2015 to 2025
@@ -65,6 +63,26 @@ I have already reported issues 1 to 32.
 31. nb/chapter02.ipynb -> last exercise solution -> rich group parity mean is lower than others parity mean but his answers
 seems to explain why the rich group have more children than the others, when the effect size points otherwise.
 32. Chapter 6: hardcoded mean of 2.2 (lam = 2.2) instead of lam = pmf_family.mean()
+33. Chap08: exercise 8.5 -> For more on this problem, see [this Wikipedia page][https://en.wikipedia.org/wiki/German_tank_problem]
+-> Parenthesis should be used in the link instead of brackets for correct markdown link display.
+34. Chap09: "Next, we computed a **p-value**, which is the probability of seeing the observed effect if the null hypothesis is true.
+P-value is the probability of observing an effect equal or bigger than the observed effect under the
+null hypothesis, not the probability of observing an effect equal to the observed efffect.
+35. Chap09: "So the hypothesis we'll test is whether pregnancy length is generally longer for first babies."
+But uses abs value of the differences between groups "abs_diff_means" which is not computing whether pregnancy
+length is generally longer for first babies but instead computes differences in both ways, longer or shorter
+pregnancy lengths. So, most likely, the function should not be using abs value to avoid computing a two-sided
+test but focus only on the cases where pregnancy length is longer for first than others. When a one sided test
+is used, the p-value reduces to half from 0.18 to approximately 0.09. So, the conclusion holds but conceptually,
+there is a discrepancy between what is being computed and what is said to be computed.
+If we remove the abs fro abs_diff_means then it is necessary to adjust the make_pmf min value:
+from `pmf = make_pmf(simulated_diffs, 0, 0.2)` to `pmf = make_pmf(simulated_diffs, -0.2, 0.2)` and the xlabel of the chart.
+The same logic applies to "Other test statistics" on the same notebook on testing variation.
+You might want to recycle some of your work on ElementsOfDataScience regarding Hypothesis testing on ThinkStats
+chap09 as you have some great figures there and visual explanations help in understanting the topic.
+
+### Unreported issues
+None 
 
 ## Interesting python constructs
 - chap03: pandas interval ranges as indices -> ranges = pd.interval_range(start=5, end=50, freq=5, closed="left")
@@ -76,6 +94,7 @@ seems to explain why the rich group have more children than the others, when the
 - chap07: multiple subplots -> plt.subplot(2, 1, 1), plt.subplot(2, 1, 2); rows, columns
 - chap07: plt.fill_between
 - chap08: np.logspace -> generate an array of numbers spaced logarithmically
+- chap08: weighted random sampling from a set of numbers: np.random.choice([1, 2.2], p=[0.98, 0.02], size=n)
 
 ## Ignore
 I will skip the notebooks, chapters and examples not listed in this document.
