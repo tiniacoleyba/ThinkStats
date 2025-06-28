@@ -14,9 +14,9 @@ This documents contains the list of noteboks and chapters I already studied or a
 - [x] chap09
 - [x] chap10
 - [x] chap11
-- [ ] chap12
-- [ ] chap13
-- [ ] chap14
+- [ ] chap12 -> Working on exercises and code construct; already reviewed the notebook except exercises
+- [x] chap13
+- [ ] chap14 -> TBD
 
 ## Examples
 - [ ] Variability
@@ -80,9 +80,12 @@ from `pmf = make_pmf(simulated_diffs, 0, 0.2)` to `pmf = make_pmf(simulated_diff
 The same logic applies to "Other test statistics" on the same notebook on testing variation.
 You might want to recycle some of your work on ElementsOfDataScience regarding Hypothesis testing on ThinkStats
 chap09 as you have some great figures there and visual explanations help in understanting the topic.
+36. Chap13: Exercise 13.1 suggests using fmarital to identify ongoing cases, but instead filters using rmarital: https://github.com/AllenDowney/ThinkStats/blob/v3/soln/chap13.ipynb
+The results using rmarital vs. fmarital are significantly different. According to the NSFG Cycle 6 Female Codebook, fmarital refers to formal marital status, while rmarital refers to informal marital status. Both fields should contain the same number of entries, but in practice they differ significantly when read into Python using resp = pd.read_csv("marriage_nsfg_female.csv.gz") This likely indicates a bug in the data processing.
+I suggest updating the exercise text to refer to rmarital — so it aligns with the code used — and reviewing why filtering by fmarital yields such different results. This issue [was reported here](https://github.com/AllenDowney/ThinkStats/issues/16).
 
 ### Unreported issues
-None 
+None
 
 ## Interesting python constructs
 - chap03: pandas interval ranges as indices -> ranges = pd.interval_range(start=5, end=50, freq=5, closed="left")
@@ -95,6 +98,8 @@ None
 - chap07: plt.fill_between
 - chap08: np.logspace -> generate an array of numbers spaced logarithmically
 - chap08: weighted random sampling from a set of numbers: np.random.choice([1, 2.2], p=[0.98, 0.02], size=n)
+- chap11: seasonal = monthly_averages[nuclear.index.month] -> selecting the same value multiple times from a series
+- chap11: from statsmodels.tsa.seasonal import seasonal_decompose -> time series analysis seasonal decomposition
 
 ## Ignore
 I will skip the notebooks, chapters and examples not listed in this document.
